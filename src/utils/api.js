@@ -18,7 +18,7 @@ export const login = async ({ email, password }) => {
 };
 
 export const register = async ({ username, email, password }) => {
-  const response = await fetch(`${API_URL}/register`, {
+  const response = await fetch(`https://backend-finale-6.onrender.com/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, email, password }),
