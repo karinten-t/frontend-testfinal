@@ -9,7 +9,7 @@ const handleResponse = async (response) => {
 };
 
 export const login = async ({ email, password }) => {
-  const response = await fetch(`${API_URL}/login`, {
+  const response = await fetch(`https://backend-finale-6.onrender.com/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -28,7 +28,7 @@ export const register = async ({ username, email, password }) => {
 
 export const getProfile = async () => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`${API_URL}/profile`, {
+  const response = await fetch(`https://backend-finale-6.onrender.com/profile`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return handleResponse(response);
@@ -36,7 +36,7 @@ export const getProfile = async () => {
 
 export const updateProfile = async ({ username, email }) => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`${API_URL}/profile`, {
+  const response = await fetch(`https://backend-finale-6.onrender.com/profile`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export const updateProfile = async ({ username, email }) => {
 
 export const createRecipe = async ({ title, description, category }) => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`${API_URL}/items`, {
+  const response = await fetch(`https://backend-finale-6.onrender.com/items`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const createRecipe = async ({ title, description, category }) => {
 
 export const getRecipes = async () => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`${API_URL}/items`, {
+  const response = await fetch(`https://backend-finale-6.onrender.com/items`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return handleResponse(response);
@@ -70,7 +70,7 @@ export const getRecipes = async () => {
 
 export const deleteRecipe = async (id) => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`${API_URL}/items/${id}`, {
+  const response = await fetch(`$https://backend-finale-6.onrender.com/items/${id}`, {
     method: 'DELETE',
     headers: { Authorization: `Bearer ${token}` },
   });
