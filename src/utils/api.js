@@ -1,4 +1,4 @@
-
+const API_URL = 'https://backend-finale-6.onrender.com';
 
 const handleResponse = async (response) => {
   const data = await response.json();
@@ -9,7 +9,7 @@ const handleResponse = async (response) => {
 };
 
 export const login = async ({ email, password }) => {
-  const response = await fetch(`https://backend-finale-6.onrender.com/login`, {
+  const response = await fetch(`${API_URL}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -18,7 +18,7 @@ export const login = async ({ email, password }) => {
 };
 
 export const register = async ({ username, email, password }) => {
-  const response = await fetch(`https://backend-finale-6.onrender.com/register`, {
+  const response = await fetch(`${API_URL}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, email, password }),
@@ -28,7 +28,7 @@ export const register = async ({ username, email, password }) => {
 
 export const getProfile = async () => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`https://backend-finale-6.onrender.com/profile`, {
+  const response = await fetch(`${API_URL}/me`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return handleResponse(response);
@@ -36,7 +36,7 @@ export const getProfile = async () => {
 
 export const updateProfile = async ({ username, email }) => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`https://backend-finale-6.onrender.com/profile`, {
+  const response = await fetch(`${API_URL}/me`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -47,22 +47,22 @@ export const updateProfile = async ({ username, email }) => {
   return handleResponse(response);
 };
 
-export const createRecipe = async ({ title, description, category }) => {
+export const createRecipe = async ({ title, description, category, ingredients, instructions }) => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`https://backend-finale-6.onrender.com/items`, {
+  const response = await fetch(`${API_URL}/recipes`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ title, description, category }),
+    body: JSON.stringify({ title, description, category, ingredients, instructions }),
   });
   return handleResponse(response);
 };
 
 export const getRecipes = async () => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`https://backend-finale-6.onrender.com/items`, {
+  const response = await fetch(`${API_URL}/recipes`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return handleResponse(response);
@@ -70,7 +70,7 @@ export const getRecipes = async () => {
 
 export const deleteRecipe = async (id) => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`$https://backend-finale-6.onrender.com/items/${id}`, {
+  const response = await fetch(`${API_URL}/recipes/${id}`, {
     method: 'DELETE',
     headers: { Authorization: `Bearer ${token}` },
   });
