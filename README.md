@@ -15,6 +15,15 @@ https://backend-finale-6.onrender.com
 
 4. Jest + React Testing Library (for unit testing)
 
+### GETTING STARTED
+## clone repository
+git clone https://github.com/yourusername/recipe-app.git
+cd recipe-app
+
+## installing dependancies
+cd frontend
+npm install
+
 ### project structure
 frontend/
 ├── public/
@@ -92,15 +101,6 @@ Route             Description
 /register	      Register page	
 /profile	      User profile dashboard	
 /recipes	      Recipe creation + list	
-
-### GETTING STARTED
-## clone repository
-git clone https://github.com/yourusername/recipe-app.git
-cd recipe-app
-
-## installing dependancies
-cd frontend
-npm install
 
 ## starting server
 npm sart
