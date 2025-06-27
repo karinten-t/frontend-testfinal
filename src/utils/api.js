@@ -1,4 +1,4 @@
-const API_URL = 'https://backend-finale-6.onrender.com';
+//const API_URL = 'https://backend-finale-6.onrender.com';
 
 const handleResponse = async (response) => {
   const contentType = response.headers.get('content-type');
