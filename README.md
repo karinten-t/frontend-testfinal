@@ -1,60 +1,109 @@
-# Recipe App Frontend
-`A React-based single-page application for managing recipes, with user authentication via JWT.`
-#### Setup Instructions
+#### RECIPE APP 
+.A full-stack web application for creating, managing, and browsing personal recipes. Built using React.js for the frontend and Flask for the backend API with secure JWT-based authentication and persistent session management.
 
-Clone the repository:
-git clone <frontend-repo-url>
-cd recipe-app-frontend
+## live deployment
+1. live app url
+2.  Backend API hosted on:
+https://backend-finale-6.onrender.com
 
+### tech used
+1. React 18+
 
-Install dependencies:
+2. React Router DOM
+
+3. CSS Modules (.css)
+
+4. Jest + React Testing Library (for unit testing)
+
+### GETTING STARTED
+## clone repository
+git clone https://github.com/yourusername/recipe-app.git
+cd recipe-app
+
+## installing dependancies
+cd frontend
 npm install
 
+### project structure
+frontend/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Dashboard.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── RecipeForm.jsx
+│   │   ├── RecipeList.jsx
+│   │   ├── Login.jsx
+│   │   └── Register.jsx
+│   ├── pages/
+│   │   ├── HomePage.jsx
+│   │   ├── ProfilePage.jsx
+│   │   └── RecipePage.jsx
+│   ├── styles/
+│   │   ├── App.css
+│   │   ├── Navbar.css
+│   │   ├── Dashboard.css
+│   │   ├── RecipeForm.css
+│   │   ├── RecipeList.css
+│   │   └── Register.css
+│   ├── utils/
+│   │   └── api.js
+│   ├── App.jsx
+│   └── index.js
+└── README.md
 
-Set environment variables:Create a .env file in the root directory with:
-REACT_APP_API_URL=http://localhost:5000/api
+### Authentication
+## jwt-based-login
+. After login, the backend returns an access token.
+. The token is stored in localStorage and added to each protected API request via an Authorization header.
 
-Replace http://localhost:5000/api with the deployed Flask API URL if necessary.
+### features
+## user authentification
+1. Register: /register
 
-Run the application:
-npm start
+2. Login: /login
 
-The app will be available at http://localhost:3000.
+3. Profile Dashboard: /profile – displays authenticated user's profile.
 
+## recipe management
+1. Create Recipe: via RecipeForm component
 
-## API Endpoints
--- The frontend interacts with the following Flask API endpoints: --
+2. View All Recipes: in RecipeList component
 
-POST /api/register: Register a new user (username, email, password).
-POST /api/login: Authenticate a user and return a JWT.
-GET /api/profile: Retrieve authenticated user’s profile (protected).
-PUT /api/profile: Update user profile (protected).
-POST /api/items: Create a recipe (title, description, category).
-GET /api/items: List all recipes for the authenticated user.
-DELETE /api/items/:id: Delete a recipe.
+3. Delete Recipe: with confirmation and re-render
 
-## Technologies Used
+4. Protected Endpoints: all recipe routes require authentication
 
-`React: Front-end framework for building the SPA.
-react-router-dom: Client-side routing.
-CSS: Responsive styling.
-React Testing Library: For unit testing the login component.
-Jest: Testing framework.`
+### testing
+run: npm test
 
-## Deployment
-Deploy the application to Vercel:
+### api intergration
+## Centralizes API calls:
 
-Push the code to a GitHub repository.
-Connect the repository to Vercel.
-Set the REACT_APP_API_URL environment variable in Vercel to point to the Flask API.
+1. login(), register()
 
-## Testing
-Run tests with:
-npm test
+2. getProfile(), updateProfile()
 
-`Tests are located in src/tests/ and include a unit test for the Login component.`
-Notes
+3. getRecipes(), createRecipe(), deleteRecipe()
 
-Ensure the Flask backend is running and accessible at the URL specified in .env.
-The app uses localStorage to store the JWT securely.
-The UI is responsive and follows WCAG guidelines for accessibility.
+## Handles:
+
+1. JSON response parsing
+
+2. Error handling
+
+3. Attaches JWT in headers
+
+### routing
+Route             Description	
+/	              Home + Dashboard
+/login	          Login page	
+/register	      Register page	
+/profile	      User profile dashboard	
+/recipes	      Recipe creation + list	
+
+## starting server
+npm sart
+
+## Set Backend URL
+. Make sure the backend API URL in utils/api.js matches your backend server
