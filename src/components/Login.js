@@ -14,8 +14,7 @@ function Login() {
     setLoading(true);
     setError('');
     try {
-      const response = await login({ email, password });
-      localStorage.setItem('token', response.access_token);
+      await login({ email, password }); // token is already stored in api.js
       navigate('/profile');
     } catch (err) {
       setError(err.message || 'Login failed');
